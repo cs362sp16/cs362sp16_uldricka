@@ -1,0 +1,8 @@
+Refactored the last five cards in the cardEffect function, treasure map, sea hag, salvager, outpost, and embargo. Chose these five simply because it would be easiest to 
+scroll back and forth from the end of cardEffect and the new functions I was creating below cardEffect. 
+ 
+First, I created placeholders for all of my new functions before cardEffect was called, then their declarations below the end of the file.
+I had to examine the variables each card needed, and include their being passed in the declaration of my new functions, but that was fairly simple. 
+All of these new functions return to one variable, which I named result. After calling each function, and putting their return value in result, I return result. 
+With these preparations, I was able to copy the code in each case statement into their new separate functions, and the program compiled. I also added a few bugs 
+to each of the functions, and made sure it compiled again. 
