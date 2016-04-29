@@ -5,6 +5,12 @@
 #include <math.h>
 #include <stdlib.h>
 
+
+int updateCoins(int player, struct gameState *state, int bonus);
+int gainCard(int supplyPos, struct gameState *state, int toFlag, int player);
+int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag);
+int gainCard(int supplyPos, struct gameState *state, int toFlag, int player);
+
 int compare(const void* a, const void* b) {
   if (*(int*)a > *(int*)b)
     return 1;
@@ -645,9 +651,9 @@ int getCost(int cardNumber)
 
 int mapeffect(int card, struct gameState *state, int currentPlayer, int handPos);
 int hageffect(int card, struct gameState *state, int currentPlayer, int handPos);
-int salvagereffect(int card, struct gameState *state, int currentPlayer, int handPos);
+int salvagereffect(int card, struct gameState *state, int currentPlayer, int handPos, int choice1);
 int outposteffect(int card, struct gameState *state, int currentPlayer, int handPos);
-int embargoeffect(int card, struct gameState *state, int currentPlayer, int handPos);
+int embargoeffect(int card, struct gameState *state, int currentPlayer, int handPos, int choice1);
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
@@ -1146,7 +1152,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	int result = 0;		//Stores the value returned by our new functions.
 	
     case embargo: 
-    result = embargoeffect(card, state, currentPlayer, handPos);
+    result = embargoeffect(card, state, currentPlayer, handPos, choice1);
 	return result;
 		
     case outpost:
@@ -1308,7 +1314,8 @@ int mapeffect(int card, struct gameState *state, int currentPlayer, int handPos)
 
 int hageffect(int card, struct gameState *state, int currentPlayer, int handPos)
 {
-      for (i = 0; i < state->numPlayers; i++){
+	int i;
+    for (i = 0; i < state->numPlayers; i++){
 	if (i != currentPlayer){
 	  state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
 	  state->discardCount[i]++;
@@ -1346,7 +1353,7 @@ int outposteffect(int card, struct gameState *state, int currentPlayer, int hand
       return 0;
 }
 
-int embargoeffect(int card, struct gameState *state, int currentPlayer, int handPos)
+int embargoeffect(int card, struct gameState *state, int currentPlayer, int handPos, int choice1)
 {
 	//+2 Coins
       state->coins = state->coins + 2;

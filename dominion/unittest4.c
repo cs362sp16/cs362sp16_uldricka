@@ -11,6 +11,7 @@ int myassert(int x,char* msg)
 	{
 		printf("Assertion failed: %s\n",msg);
 		failure = 1;
+		return 0;
 	}
 }
 

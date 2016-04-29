@@ -14,6 +14,14 @@ interface.o: interface.h interface.c
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
+	
+unittest1: unittest1.c dominion.o
+	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
+	
+results.out: unittest1 playdom
+	./playdom 3 >> results.out
+	echo "GCOV AFTER PLAYING A GAME" >> results.out
+	gcov dominion.c >> results.out
 
 all: playdom player
 
