@@ -34,7 +34,7 @@ int main()
 	int x = isGameOver(&gametime);
 	myassert((x == 0), "isGameOver reported a new game as over. \n");
 	
-	gametime->supplyCount[province] = 0;
+	gametime.supplyCount[province] = 0;
 	
 	int y = isGameOver(&gametime);
 	myassert((y == 1), "isGameOver did not recognize a game with an empty province pile as over. \n");
@@ -43,7 +43,7 @@ int main()
 	
 	for (i = 0; i < 25; i++)
 	{
-		gametime->supplyCount[i] = 0;
+		gametime.supplyCount[i] = 0;
 	}
 	
 	int z = isGameOver(&gametime);

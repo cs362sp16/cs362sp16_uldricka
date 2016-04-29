@@ -33,12 +33,12 @@ int main()
 	
 	endTurn(&gametime);
 	
-	int x = gametime->whoseTurn;
+	int x = gametime.whoseTurn;
 	myassert((x == 1), "endTurn did not end the first player's turn. \n");
 	
 	endTurn(&gametime);
 	
-	int y = gametime->whoseTurn;
+	int y = gametime.whoseTurn;
 	myassert((y == 0), "endTurn did not successfully loop back to the first player's turn upon the end of the last player's turn. \n");
 	
 	checkasserts();
