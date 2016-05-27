@@ -65,8 +65,16 @@ unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2
 	./cardtest4 >> unittestresults.out
 	echo "GCOV AFTER FOURTH CARD TEST" >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	
+testdominion: testdominion.c dominion.o interface.o
+	gcc -o testdominion testdominion.c -g dominion.o interface.o rngs.o $(CFLAGS)
+	
+testdominion.out: testdominion playdom
+	./testdominion 42 >> testdominion.out
+	echo "GCOV ON DOMINION.C AFTER GAME" >> testdominion.out
+	gcov dominion.c >> testdominion.out
 
-all: playdom player
+all: playdom player testdominion
 
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
