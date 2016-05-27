@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "beginning comparison process"
+dirone=$1
+dirtwo=$2
+seed=$3
+
+cd $dirone
+make all
+gcc -o testdominion testdominion.c dominion.c interface.c rngs.c
+./testdominion $seed > testdominion_dirone.out
+
+cd $dirtwo
+make all
+gcc -o testdominion testdominion.c dominion.c interface.c rngs.cd
+./testdominion.c $seed > testdominion_dirtwo.out
+cp testdominion_dirtwo.out $dirone
+cd $dirone
+
+cmp -s testdominion_dirone.out testdominion_dirtwo.out > /dev/null
+if [#? -eq 1]; then
+	echo TEST FAIL
+else
+	echo TEST SUCCESS
+fi
