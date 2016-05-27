@@ -1,0 +1,3 @@
+It seems really difficult to pare down the differences between two implementations and figure out who is correct, to the point where I wasn't able to make a comprehensive judgement. 
+Coverage is getting more and more easy to produce as I become more familiar with the code we're working with, so 60 percent was pretty easy to accomplish. 
+It'd be hard to figure out where to stop when describing how this isn't ideal, zero communication between classmates, no standards for output, and only testing against one other implementation could all seriously stunt our differential test's results. 
