@@ -1,0 +1,10 @@
+Bug in village card, using my unit test for it. 
+My unit test output: "village card did not increment two actions"
+
+Bug was on line 1336, you incremented three actions. 
+
+Line is: 
+	state->numActions = state->numActions + 3;
+
+Should be: 
+		state->numActions = state->numActions + 2;

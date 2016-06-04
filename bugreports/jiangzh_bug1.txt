@@ -1,0 +1,12 @@
+Bug found in your smithy card, using my unit test for the card function. 
+My unit test output: "Smithy did not correctly add three cards to hand"
+Upon closer examination, I think the error lies in the lack of brackets following the for loop on line 1324. 
+
+Lines currently are: 
+for(i=0; i<3; i++)
+drawCard(currentPlayer, state);
+
+Fixed by: 
+for(i=0; i<3; i++){
+drawCard(currentPlayer, state);
+}
