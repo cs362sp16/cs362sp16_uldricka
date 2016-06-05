@@ -7,4 +7,4 @@ Line is:
 	state->numActions = state->numActions + 3;
 
 Should be: 
-		state->numActions = state->numActions + 2;
+	state->numActions = state->numActions + 2;

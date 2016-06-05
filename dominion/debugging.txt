@@ -1,0 +1,26 @@
+While testing my whole game, I ended up isolating a pretty severe bug in how the feast card worked. 
+
+If the feast card was called, the game would never actually complete playing it, although it would 
+not crash. For the sake of the assignment, I used cdb to place breakpoints throughout the case for 
+it being played. The logic error was pretty easy to spot after going through with a few conditions, 
+in this case, the variable used to denote when to exit the while loop was never getting changed, which 
+actually may have been my own doing at the beginning of the term! 
+
+The principles from Debugging that I found applied to this specific bug were...
+
+#1: Understand the System. Without understanding the way our dominion code works, by working with it 
+extensively throughout the term, I could have never known where to place my fix. 
+
+#5: Change One Thing At A Time. I commonly experience the temptation to take a grapeshot approach to
+fixing my code, but since I was keeping Agans's principles in mind, I made certain that my solutions
+were implemented one at a time, tested, then reverted. 
+
+#6 Keep An Audit Trail. Sort of. The 20 minute rule was kept firmly in my mind, the bug only took me 
+around 10 minutes to fix, so I never switched into keeping that trail written down, as it would have
+been a waste of time. 
+
+#7 Check the Plug. I'm a little embarrassed to admit that the only reason this took 10 minutes in the 
+first place was because I didn't assume that the while loop's most basic pieces weren't in place. 
+
+#9 If You Didn't Fix It, It Ain't Fixed. Of course, after putting in a way for the while loop to end, 
+I ran my tests again, and ascertained that the issue was fixed. 
