@@ -1,0 +1,14 @@
+In my initial attempt at mutant testing, I generated 200 mutants of the cards I had been testing, 
+inserted the generated mutant code in the place of the original card implementations, and put together 
+an extremely simple shell script to compile each mutant and run all my unit and random tests on them, 
+and output how many mutants were killed, and how many survived. The numbers were a bit low, but I was 
+specifically interested in testing my unit and random tests, which I felt more confident in than my game 
+implementation, and as such needed to use a reasonable amount of mutations so it wouldn't be too horribly 
+time consuming to copy and paste the relevant code snippets into dominion.c and save as a mutant again and 
+again. The results surprised me, while my coverage was solid when I wrote the tests in question, they 
+ultimately proved pretty weak against mutation testing, only killing 43 out of 200 mutants total. The
+mutants that were killed were pretty evenly scattered throughout the 200, as well as over all of my tests, 
+so it doesn't seem like the mutants were improperly generated, my tests simply weren't strong enough to spot 
+the differences. I'm actually pretty eager to take a look at how I can achieve better numbers once my finals 
+are over, since I was so shocked at the results, it feels like if I can spot the weaknesses revealed by 
+mutation testing, my test writing skills could significantly improve. 
